@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Vue Helloworld</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .app {
+            width: 50%;
+            margin: 40px auto;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="app">
+        <h1 class="mb-20">Counter Example</h1>
+        <div class="mb-20">
+            <div v-if="counter">
+                {{counter}}
+            </div>
+            <div v-if="!counter">
+                Click on the button to increment the counter
+            </div>
+        </div>
+        <div>
+            <button class="mb-20" :id="id" @click="incrementCounter">Increment</button>
+        </div>
+
+        <div v-if="counter">
+            <h4 class="mb-20">counterArray : </h4>
+            <div v-for="item in counterArray" :key="item">
+                {{item}}
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            counterArray: [],
+            id: 'counter-btn',
+
+        },
+        methods: {
+            incrementCounter: function () {
+                this.counter++;
+                this.counterArray.push(this.counter)
+            }
+        },
+        created() {
+            console.log("counter created");
+        },
+        mounted() {
+            console.log("counter mounted");
+        },
+        updated() {
+            console.log("counter updated");
+        }
+
+    })
+</script>
+
+</html>
